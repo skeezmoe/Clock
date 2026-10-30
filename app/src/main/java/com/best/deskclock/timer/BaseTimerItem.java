@@ -84,6 +84,7 @@ public abstract class BaseTimerItem extends ConstraintLayout {
     protected abstract View getIndicatorState();
     protected abstract BaseProgressIndicator<?> getProgressIndicator();
     protected abstract View getResetButton();
+    protected abstract View getEditButton();
     protected abstract View getDeleteButton();
     protected abstract MaterialButton getPlayPauseButton();
 
@@ -293,6 +294,7 @@ public abstract class BaseTimerItem extends ConstraintLayout {
         // Initialize some potentially expensive areas of the user interface only on state changes.
         if (timer.getState() != mLastState || deleteAfterUse != mLastDeleteAfterUse) {
             getResetButton().setVisibility(VISIBLE);
+            getEditButton().setVisibility(INVISIBLE);
 
             mLastState = timer.getState();
             mLastDeleteAfterUse = deleteAfterUse;
@@ -300,21 +302,25 @@ public abstract class BaseTimerItem extends ConstraintLayout {
             switch (mLastState) {
                 case RESET -> {
                     getResetButton().setVisibility(INVISIBLE);
+                    getEditButton().setVisibility(VISIBLE);
                     getPlayPauseButton().setIcon(mIconPlay);
                 }
 
                 case PAUSED -> {
                     getResetButton().setVisibility(VISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(mIconPlay);
                 }
 
                 case RUNNING -> {
                     getResetButton().setVisibility(VISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(mIconPause);
                 }
 
                 case EXPIRED, MISSED -> {
                     getResetButton().setVisibility(INVISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(deleteAfterUse ? mIconDelete : mIconStop);
                 }
             }

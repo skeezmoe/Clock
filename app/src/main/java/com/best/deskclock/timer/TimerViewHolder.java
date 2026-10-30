@@ -51,6 +51,7 @@ public class TimerViewHolder extends RecyclerView.ViewHolder {
 
         final MaterialButton playPauseButton;
         final MaterialButton resetButton;
+        final MaterialButton editButton;
         final View deleteButton;
 
         mTimerView.setGeneralFonts(fonts.general(), fonts.bold());
@@ -59,6 +60,7 @@ public class TimerViewHolder extends RecyclerView.ViewHolder {
             case TimerAdapter.SINGLE_TIMER, TimerAdapter.MULTIPLE_TIMERS -> {
                 TimerItemBinding binding = TimerItemBinding.bind(view);
                 resetButton = binding.resetButton;
+                editButton = binding.editButton;
                 deleteButton = binding.deleteTimerButton;
                 addTimeButton = binding.timerAddTimeButton;
                 removeTimeButton = binding.timerRemoveTimeButton;
@@ -69,6 +71,7 @@ public class TimerViewHolder extends RecyclerView.ViewHolder {
             case TimerAdapter.MULTIPLE_TIMERS_COMPACT -> {
                 TimerItemCompactBinding compactBinding = TimerItemCompactBinding.bind(view);
                 resetButton = compactBinding.resetButton;
+                editButton = compactBinding.editButton;
                 deleteButton = compactBinding.deleteTimerButton;
                 addTimeButton = compactBinding.timerAddTimeButton;
                 removeTimeButton = compactBinding.timerRemoveTimeButton;
@@ -79,14 +82,6 @@ public class TimerViewHolder extends RecyclerView.ViewHolder {
             default -> throw new IllegalArgumentException("Unknown ViewType: " + viewType);
         }
 
-        itemView.setOnClickListener(v -> {
-            long currentTime = SystemClock.elapsedRealtime();
-            if (currentTime - mLastClickTime >= Utils.MIN_CLICK_INTERVAL) {
-                mLastClickTime = currentTime;
-                timerClickHandler.displayBottomSheetDialog(getTimer());
-            }
-        });
-
         View.OnClickListener playPauseListener = v -> {
             Utils.performHapticFeedback(v, haptics.isVibrationsEnabled(), HapticFeedbackConstantsCompat.VIRTUAL_KEY);
             timerClickHandler.onPlayPauseClicked(getTimer());
@@ -95,6 +90,14 @@ public class TimerViewHolder extends RecyclerView.ViewHolder {
         resetButton.setOnClickListener(v -> {
             Utils.performHapticFeedback(v, haptics.isVibrationsEnabled(), HapticFeedbackConstantsCompat.VIRTUAL_KEY);
             timerClickHandler.onResetClicked(getTimer());
+        });
+
+        editButton.setOnClickListener(v -> {
+            long currentTime = SystemClock.elapsedRealtime();
+            if (currentTime - mLastClickTime >= Utils.MIN_CLICK_INTERVAL) {
+                mLastClickTime = currentTime;
+                timerClickHandler.displayBottomSheetDialog(getTimer());
+            }
         });
 
         deleteButton.setOnClickListener(v -> {

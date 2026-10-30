@@ -111,20 +111,42 @@
             android:textStyle="bold"
             tools:text="01:23" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/reset_button"
-            style="?attr/materialIconButtonStyle"
+        <FrameLayout
+            android:id="@+id/edit_reset_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:contentDescription="@string/reset"
-            app:icon="@drawable/ic_reset"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:iconSize="32dp"
-            app:iconTint="?attr/colorPrimary"
-            app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Medium"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_gravity="bottom|center_horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_button"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/edit"
+                android:visibility="invisible"
+                app:icon="@drawable/ic_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="32dp"
+                app:iconTint="?attr/colorPrimary"
+                app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Small"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/reset_button"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/reset"
+                android:visibility="visible"
+                app:icon="@drawable/ic_reset"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="32dp"
+                app:iconTint="?attr/colorPrimary"
+                app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.IconButton.Medium"
+                tools:ignore="TouchTargetSizeCheck" />
+        </FrameLayout>
 
     </com.best.deskclock.uicomponents.CircleButtonsLayout>
 

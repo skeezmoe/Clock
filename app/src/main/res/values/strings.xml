@@ -33,6 +33,8 @@
     <string name="delete">Delete</string>
     <!-- Label "Reset" -->
     <string name="reset">Reset</string>
+    <!-- Label "Edit" -->
+    <string name="edit">Edit</string>
     <!-- Dialog label to choose a new background image. -->
     <string name="label_new_image">New image</string>
     <!-- Dialog label to choose a new font. -->

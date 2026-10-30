@@ -498,6 +498,7 @@ public class ExpiredTimersActivity extends BaseActivity implements SensorEventLi
         final TextView labelView;
         final View addTimeButton;
         final View resetButton;
+        final View editButton;
         final View stopButton;
 
         if (useCompactLayout) {
@@ -511,6 +512,7 @@ public class ExpiredTimersActivity extends BaseActivity implements SensorEventLi
             labelView = compactBinding.timerLabel;
             addTimeButton = compactBinding.timerAddTimeButton;
             resetButton = compactBinding.resetButton;
+            editButton = compactBinding.editButton;
             stopButton = compactBinding.playPauseButton;
         } else {
             TimerItemBinding normalBinding = TimerItemBinding.inflate(
@@ -523,6 +525,7 @@ public class ExpiredTimersActivity extends BaseActivity implements SensorEventLi
             labelView = normalBinding.timerLabel;
             addTimeButton = normalBinding.timerAddTimeButton;
             resetButton = normalBinding.resetButton;
+            editButton = normalBinding.editButton;
             stopButton = normalBinding.playPauseButton;
         }
 
@@ -551,6 +554,7 @@ public class ExpiredTimersActivity extends BaseActivity implements SensorEventLi
 
         // Add logic to hide the "Reset" buttons
         resetButton.setVisibility(INVISIBLE);
+        editButton.setVisibility(VISIBLE);
 
         // Add logic to the "Stop" button
         stopButton.setOnClickListener(v -> {

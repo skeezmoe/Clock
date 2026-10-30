@@ -313,6 +313,7 @@ public class TimerDisplayPreviewActivity extends BaseActivity {
         final BaseTimerItem timerView;
         final TextView labelView;
         final View resetButton;
+        final View editButton;
         final View stopButton;
 
         if (useCompactLayout) {
@@ -325,6 +326,7 @@ public class TimerDisplayPreviewActivity extends BaseActivity {
             timerView = compactView;
             labelView = compactBinding.timerLabel;
             resetButton = compactBinding.resetButton;
+            editButton = compactBinding.editButton;
             stopButton = compactBinding.playPauseButton;
         } else {
             TimerItemBinding normalBinding = TimerItemBinding.inflate(
@@ -336,6 +338,7 @@ public class TimerDisplayPreviewActivity extends BaseActivity {
             timerView = normalView;
             labelView = normalBinding.timerLabel;
             resetButton = normalBinding.resetButton;
+            editButton = normalBinding.editButton;
             stopButton = normalBinding.playPauseButton;
         }
 
@@ -358,6 +361,7 @@ public class TimerDisplayPreviewActivity extends BaseActivity {
 
         // Add logic to hide the "Reset" buttons
         resetButton.setVisibility(INVISIBLE);
+        editButton.setVisibility(VISIBLE);
 
         // Add logic to the "Stop" button
         stopButton.setOnClickListener(v -> finishActivity());

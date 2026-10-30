@@ -84,6 +84,7 @@
     <string name="action_pause">Pause</string>
     <string name="action_fire">Fire</string>
     <string name="action_reset">Reset</string>
+    <string name="action_edit">Edit</string>
     <string name="action_show">Show</string>
     <string name="action_set_add_time_button_value">Set Add Time Button Value</string>
     <string name="action_set_remove_time_button_value">Set Remove Time Button Value</string>
