@@ -301,21 +301,25 @@ public abstract class BaseTimerItem extends ConstraintLayout {
             switch (mLastState) {
                 case RESET -> {
                     getResetButton().setVisibility(INVISIBLE);
+                    getEditButton().setVisibility(VISIBLE);
                     getPlayPauseButton().setIcon(mIconPlay);
                 }
 
                 case PAUSED -> {
                     getResetButton().setVisibility(VISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(mIconPlay);
                 }
 
                 case RUNNING -> {
                     getResetButton().setVisibility(VISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(mIconPause);
                 }
 
                 case EXPIRED, MISSED -> {
                     getResetButton().setVisibility(INVISIBLE);
+                    getEditButton().setVisibility(INVISIBLE);
                     getPlayPauseButton().setIcon(deleteAfterUse ? mIconDelete : mIconStop);
                 }
             }
